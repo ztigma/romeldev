@@ -7,3 +7,6 @@ este te permite crear objetos 3D nativos en tu pagina web
 Esta tecnología apenas empieza y yo solo como desarrollador nunca voy a poder desarrollarla a su máximo potencial
 esta se quedara en el punto que se encuentra ahora hasta que existan iniciativas de mejorar su compatibilidad con
 objetos fbx, modelos, rige, etc para poder construir una web 3D del futuro.
+
+por favor visitar la wiki para tener algo de documentacion:
+https://github.com/ztigma/romeldev/wiki
