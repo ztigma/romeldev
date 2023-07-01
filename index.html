@@ -1,0 +1,544 @@
+<!--
+    Desarrollado e implementado por Romel Lucero. Venezuela.
+-->
+<head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="public/css/Attributes.css"/>
+    <link rel="stylesheet" href="public/css/3D.css"/>
+
+    <!-- JS -->
+    <script src="public/js/Operators.js"></script>
+    <script src="public/js/Vector3.js"></script>
+    <script src="public/js/Quaternion.js"></script>
+    
+    <script src="public/js/OnCollision.js"></script>
+
+    <script src="public/js/Client.js"></script>
+    <script src="public/js/Ids.js"></script>
+    
+    <script src="public/js/Interfaz.js"></script>
+    <script src="public/js/Colors.js"></script>
+    <script src="public/js/Lenguaje.js"></script>
+    <script src="public/js/Mouse.js"></script>
+    <script src="public/js/Keys.js"></script>
+
+    
+    <script src="public/js/Transform.js"></script>
+    <script src="public/js/Force.js"></script>
+    
+    <script>
+        var backs = new Backgrounds();
+        is_editor=true;
+    </script>
+
+    <!-- SVG -->
+    <link rel="icon" type="image/svg+xml" href="public/img/icon_main.png" />
+    <title>RomelDev HTML 3D Es Posible!</title>
+</head>
+<body
+onmousemove="get_mouse(event);"
+onupdate="set_mouse();"
+onkeydown="key_on(event);"
+onkeyup="key_off(event);"
+>
+    <!-- DECLARATIVAS -->
+
+    <!-- CUBE -->
+    <section imply="false" objeto="true" export="cube" style="
+    --otx:0; --oty:0; --otz:0;
+    --orx:0; --ory:0; --orz:0;
+    --osx:1; --osy:1; --osz:1;
+    ">
+        <div front="" style="background-color: var(--color);"></div>
+        <div back="" style="background-color: var(--color);"></div>
+        <div right="" style="background-color: var(--color);"></div>
+        <div left="" style="background-color: var(--color);"></div>
+        <div top="" style="background-color: var(--color);"></div>
+        <div bottom="" style="background-color: var(--color);"></div>
+    </section>
+
+    <!-- MESA -->
+    <div imply="false" export="face_mesa" style="
+    background-color: peru;
+    background: url(public/img/madera.jpeg);
+    background-size: 300px 300px;
+    ">
+    </div>
+    <section imply="false" import="cube" export="part_mesa" collision3d="true" style="--otx:0; --oty:25; --otz:0; --orx:0; --ory:0; --orz:0; --osx:1; --osy:1; --osz:1;" objeto="true" child_mode="replace">
+        <div front="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div back="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div right="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div left="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div top="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div bottom="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+    </section>
+    <div imply="false" export="mesa" parent3d="true" style="
+    --otx:0; --oty:125; --otz:0;
+    --orx:0; --ory:0; --orz:0;
+    ">
+        <section import="part_mesa" imply="true" child_mode="add" style="
+        --otx:0; --oty:0; --otz:0;
+        --orx:0; --ory:0; --orz:0;
+        --osx:2; --osy:0.1; --osz:4;
+        " collision3d="true" objeto="true">
+        <div front="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div back="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div right="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div left="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div top="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div bottom="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+    </section>
+        <section import="part_mesa" imply="true" child_mode="add" style="
+        --otx:0; --oty:25; --otz:0;
+        --orx:0; --ory:0; --orz:0;
+        --osx:0.5; --osy:0.5; --osz:2;
+        " collision3d="true" objeto="true">
+        <div front="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div back="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div right="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div left="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div top="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div bottom="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+    </section>
+        <section import="part_mesa" imply="true" child_mode="add" style="
+        --otx:0; --oty:40; --otz:0;
+        --orx:0; --ory:0; --orz:0;
+        --osx:1.5; --osy:0.5; --osz:2.5;
+        " collision3d="true" objeto="true">
+        <div front="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div back="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div right="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div left="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div top="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div bottom="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+    </section>
+    </div>
+
+    
+
+    <!-- 2D o UI -->
+    <div _orientation="vertical">
+        <div _orientation="vertical_center" ui="true" select="false" style="
+            padding: 2vw;
+            z-index: 10;
+            position: fixed;
+            top: 0;
+            left: 0;
+        ">
+            <div>
+                X: Bloquearse
+            </div>
+            <div>
+                WASD: Moverse
+            </div>
+            <div>
+                Mouse: Rotar
+            </div>
+            <div>
+                Click: Interacutar
+            </div>
+        </div>
+        <mira _orientation="vertical_center" select="false" style="
+        font-size: 15px;
+        color: red;
+        position: fixed;
+        top: 50vh;
+        left: 50vw;
+        z-index: 100;
+        ">
+            o
+        </mira>
+    </div>
+
+    <!-- 3D -->
+    <corrector_de_perspectiva>
+        <rota_objetos id="rotar" style="--orx:-8.48482; --ory:-31.6494; --orz:0; --oqx:0.35166; --oqy:-0.0942758; --oqz:0.64834;">
+            <mueve_objetos id="mover" style="--otx:-9.88696; --oty:45; --otz:388.045; --w:20; --h:100; --osx:1; --osy:1; --osz:1;" onforce="true" oncollision>
+                <!-- IMPLEMENTACIONES -->
+
+                <section import="cube" objeto="true" imply="true" child_mode="replace" collision3d="true" style="
+                --otx: -400; --oty:0; --otz: 100;
+                --orx:0; --ory:0; --orz:0;
+                --osx:1; --osy: 2; --osz: 4;
+                ">
+                    <div front="" style="background: url('public/img/pared.jpg') 0% 0% / 1000px 250px;"></div>
+                    <div back="" style="background: url('public/img/pared.jpg') 0% 0% / 1000px 250px;"></div>
+                    <div right="" style="background: url('public/img/pared.jpg') 0% 0% / 250px 250px;"></div>
+                    <div left="" style="background: url('public/img/pared.jpg') 0% 0% / 250px 250px;"></div>
+                    <div top="" style="background: url('public/img/pared.jpg') 0% 0% / 250px 250px;"></div>
+                    <div bottom="" style="background: url('public/img/pared.jpg') 0% 0% / 250px 250px;"></div>
+                </section>
+
+                <section import="cube" imply="true" child_mode="replace" collision3d="true" style="--oty:100; --osx:8; --osy:0.1; --osz:8; --w:200; --otx:0; --otz:0; --orx:0; --ory:0; --orz:0;" objeto="true">
+                    <div top="" style="
+                    background-color: brown;
+                    background: url('public/img/piso_tile.webp');
+                    background-size: 200px 200px;
+                    "></div>
+                </section>
+
+                <section import="tv" child_mode="add" imply="true" parent3d="true" style="--otx: 0; --oty: 100; --otz: 50; --orx:0; --ory:-45; --orz:0; --osx: 0.25; --osy:0.25; --osz: 0.25;">
+        <section import="cube" imply="true" base="" style="
+        --otx:0; --oty: -100; --otz:0;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 5; --osy:2; --osz: 0.1;
+        " objeto="true" child_mode="replace">
+            <div front="" style="background-color: black;">
+                <div import="interface_tv" child_mode="add" imply="true" _orientation="vertical" _scroll="vertical" style="width: 100%; height: 100%;">
+        <texto import="texto" style="font-weight: bold; color: white; transform: scale3d(0.33, 1, 1); width: auto; height: auto; font-size: 70px; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            HTML 3D
+        </texto>
+        <texto import="texto" style="font-weight: bold; color: white; transform: scale3d(0.33, 1, 1); text-align: justify; font-size: 50px; width: auto; height: auto; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Es el engine que potencia esta web
+            este te permite crear objetos 3D nativos en tu pagina web
+            100% compatible con todo lo que conoces de la tecnologia web.
+        </texto>
+        <texto import="texto" style="font-weight: bold; color: white; transform: scale3d(0.33, 1, 1); text-align: justify; font-size: 50px; width: auto; height: auto; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Esta tecnologia apenas empieza y yo solo como desarrollador nunca voy a poder desarrollarla a su maximo potencial
+            esta se quedara en el punto que se encuentra ahora hasta que existan iniciativas de mejorar su compatibilidad con
+            objetos fbx, modelos, rigs, etc para poder construir una web 3D del futuro.
+        </texto>
+        <texto import="texto" style="font-weight: bold; color: white; transform: scale3d(0.33, 1, 1); text-align: justify; font-size: 50px; width: auto; height: auto; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Desarrollado 10%
+        </texto>
+        <texto import="texto" style="font-weight: bold; color: white; transform: scale3d(0.33, 1, 1); text-align: justify; font-size: 50px; width: auto; height: auto; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Inversionistas: Ninguno.
+        </texto>
+        <texto import="texto" style="font-weight: bold; color: white; transform: scale3d(0.33, 1, 1); text-align: justify; font-size: 50px; width: auto; height: auto; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Dinero Invertido: 0$.
+        </texto>
+        <div import="texto" style="font-weight: bold; color: white; transform: scale3d(0.33, 1, 1); text-align: justify; font-size: 50px; width: auto; height: auto; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Requiere:
+        </div>
+        <a import="texto" style="font-weight: bold; color: white; transform: scale3d(0.33, 1, 1); text-align: justify; font-size: 50px; width: auto; height: auto; padding: 30px;" href="https://foundation.mozilla.org/es/" target="_blank" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Interes de parte de Mozilla Foundation para integrarlo a los motores web
+            asi como mejoras en el codigo base del renderizado de imagene o texturas 
+            para lograr mejor rendimiento.
+        </a>
+        <div import="texto" style="font-weight: bold; color: white; transform: scale3d(0.33, 1, 1); text-align: justify; font-size: 50px; width: auto; height: auto; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Especialistas para la traduccion e implementacion de objetos fbx.
+        </div>
+        <div import="texto" style="font-weight: bold; color: white; transform: scale3d(0.33, 1, 1); text-align: justify; font-size: 50px; width: auto; height: auto; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Levantamiento de una comunidad que pueda desarrollar libremente esta tecnologia asi como para solucionar problemas e inconvenientes
+            relacionados con esta tecnologia.
+        </div>
+    </div>
+            </div>
+            <div back="" style="background-color: black;"></div>
+            <div right="" style="background-color: black;"></div>
+            <div left="" style="background-color: black;"></div>
+            <div top="" style="background-color: black;"></div>
+            <div bottom="" style="background-color: black;"></div>
+        </section>
+        <section import="cube" imply="true" base="" style="
+        --otx:0; --oty: 25; --otz:-5;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 1; --osy:1; --osz: 0.1;
+        " objeto="true" child_mode="replace">
+            <div front="" style="background-color: gray;"></div>
+            <div back="" style="background-color: gray;"></div>
+            <div right="" style="background-color: gray;"></div>
+            <div left="" style="background-color: gray;"></div>
+            <div top="" style="background-color: gray;"></div>
+            <div bottom="" style="background-color: gray;"></div>
+        </section>
+        <section import="cube" imply="true" base="" style="
+        --otx:0; --oty: 75; --otz:0;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 2; --osy:0.1; --osz: 1;
+        " objeto="true" child_mode="replace">
+            <div front="" style="background-color: black;"></div>
+            <div back="" style="background-color: black;"></div>
+            <div right="" style="background-color: black;"></div>
+            <div left="" style="background-color: black;"></div>
+            <div top="" style="background-color: black;"></div>
+            <div bottom="" style="background-color: black;"></div>
+        </section>
+    </section>
+
+                <section import="mesa" child_mode="add" imply="true" parent3d="true" style="--otx:0; --oty:125; --otz:0; --orx:0; --ory:0; --orz:0;">
+        <section import="part_mesa" imply="true" child_mode="add" style="
+        --otx:0; --oty:0; --otz:0;
+        --orx:0; --ory:0; --orz:0;
+        --osx:2; --osy:0.1; --osz:4;
+        " collision3d="true" objeto="true">
+        <div front="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 200px 1000px;"></div>
+        <div back="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 280px 1000px;"></div>
+        <div right="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 200px 1000px;"></div>
+        <div left="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 200px 1000px;"></div>
+        <div top="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div bottom="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+    </section>
+        <section import="part_mesa" imply="true" child_mode="add" style="
+        --otx:0; --oty:25; --otz:0;
+        --orx:0; --ory:0; --orz:0;
+        --osx:0.5; --osy:0.5; --osz:2;
+        " collision3d="true" objeto="true">
+        <div front="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div back="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div right="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div left="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div top="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div bottom="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+    </section>
+        <section import="part_mesa" imply="true" child_mode="add" style="
+        --otx:0; --oty:40; --otz:0;
+        --orx:0; --ory:0; --orz:0;
+        --osx:1.5; --osy:0.5; --osz:2.5;
+        " collision3d="true" objeto="true">
+        <div front="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div back="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div right="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div left="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div top="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+        <div bottom="" import="face_mesa" imply="false" child_mode="replace" style="background: url(&quot;public/img/madera.jpeg&quot;) 0% 0% / 300px 300px;"></div>
+    </section>
+    </section>
+
+                <section import="tienda" child_mode="add" imply="true" parent3d="true" style="--otx: 80; --oty: 108; --otz: 100; --orx:0; --ory:0; --orz:0; --osx: 0.25; --osy:0.25; --osz: 0.25;">
+        <section import="cube" imply="true" techo="" style="
+        --otx:0; --oty: -27; --otz: 88; 
+        --orx: -12; --ory:0; --orz:0; 
+        --osx: 1; --osy:0.1; --osz: 1;
+        " objeto="true" child_mode="replace">
+            <div top="" import="face_techo" imply="false" child_mode="replace" style="background: url(&quot;public/img/lineas_tile.webp&quot;) 0% 0% / 500px 500px;"></div>
+        </section>
+        <section import="cube" imply="true" centro="" style="
+        --otx:0; --oty: 5; --otz:0;
+        --orx:0; --ory:0; --orz:0;
+        --osx: 1; --osy:1; --osz: 1;
+        " objeto="true" child_mode="replace">
+            <div front="" style="
+            background: url(public/img/tienda.jpg);
+            background-size: 500px 500px;
+            background-size: contain;
+            background-color: cadetblue;
+            "></div>
+
+            <div back="" style="background-color: cadetblue;"></div>
+
+            <div right="" style="background-color: cadetblue;">
+                <div import="interface_tienda" child_mode="add" imply="true" _orientation="vertical" _scroll="vertical" style="width: 100%; height: 100%;">
+        <texto import="texto" style="font-weight: bold; width: auto; height: auto; color: black; font-size: 70px; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Roraima Marketplace
+        </texto>
+        <div import="texto" objeto="false" _orientation="vertical_center" child_mode="replace" style="width: auto; height: auto; color: black; font-size: 70px; padding: 30px;">
+            Descripcion:
+        </div>
+        <div import="texto" style="text-align: justify; font-size: 50px; width: auto; height: auto; color: black; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Viene a ser una tecnologia y tienda online centralizada y localizada en Venezuela
+            esto viene debido a una necesidad real de este recurso en el pais que esta totalmente faltante
+            y es totalmente indispensable para una economia 4.0.
+        </div>
+        <div import="texto" style="color: white; width: auto; height: auto; font-size: 70px; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Desarrollado: 0%
+        </div>
+        <div import="texto" style="color: white; width: auto; height: auto; font-size: 70px; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Inversionistas: Ninguno.
+        </div>
+        <div import="texto" style="color: white; width: auto; height: auto; font-size: 70px; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Dinero Invertido: 0$.
+        </div>
+        <div import="texto" style="color: white; width: auto; height: auto; font-size: 70px; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Requiere:
+        </div>
+        <div import="texto" style="color: white; width: auto; height: auto; font-size: 70px; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Servidor Web.
+        </div>
+        <div import="texto" style="color: white; width: auto; height: auto; font-size: 70px; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Dominio.
+        </div>
+        <div import="texto" style="color: white; width: auto; height: auto; font-size: 70px; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            Productos.
+        </div>
+        <div import="texto" style="color: white; height: 100px; width: auto; font-size: 70px; padding: 30px;" objeto="false" _orientation="vertical_center" child_mode="replace">
+            
+        </div>
+    </div>
+            </div>
+
+            <div left="" style="background-color: cadetblue;"></div>
+            <div top="" style="background-color:burlywood;"></div>
+            <div bottom="" style="background-color: cadetblue;"></div>
+        </section>
+        <section import="cube" imply="true" base="" style="
+        --otx:0; --oty: 50; --otz:0;
+        --orx:0; --ory:0; --orz:0;
+        --osx: 1.2; --osy:0.1; --osz: 1.2;
+        " objeto="true" child_mode="replace">
+            <div front="" style="background-color: gray;"></div>
+            <div back="" style="background-color: gray;"></div>
+            <div right="" style="background-color: gray;"></div>
+            <div left="" style="background-color: gray;"></div>
+            <div top="" style="background-color: gray;"></div>
+            <div bottom="" style="background-color: gray;"></div>
+        </section>
+    </section>
+
+                <section imply="true" parent3d="true" style="--otx: 0; --oty: 119; --otz: 200; --orx: -45; --ory:0; --orz:0; --osx: 0.75; --osy:0.25; --osz: 0.75;">
+        <section import="cube" imply="true" base="" child_mode="add" style="
+        --otx:0; --oty: 0; --otz:0;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 1.3; --osy:0.1; --osz: 0.5;
+        --color: gray;
+        " objeto="true">
+        <div front="" style="background-color: var(--color);"></div>
+        <div back="" style="background-color: var(--color);"></div>
+        <div right="" style="background-color: var(--color);"></div>
+        <div left="" style="background-color: var(--color);"></div>
+        <div top="" style="background-color: var(--color);"></div>
+        <div bottom="" style="background-color: var(--color);"></div>
+    </section>
+    
+
+                <section import="cube" imply="true" base="" child_mode="add" style="
+        --otx: -43; --oty: -2; --otz: -10;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 0.1; --osy:0.1; --osz: 0.1;
+        --color: red;
+        " objeto="true">
+        <div front="" style="background-color: var(--color);"></div>
+        <div back="" style="background-color: var(--color);"></div>
+        <div right="" style="background-color: var(--color);"></div>
+        <div left="" style="background-color: var(--color);"></div>
+        <div top="" style="background-color: var(--color);font-size: 500px;">W</div>
+        <div bottom="" style="background-color: var(--color);"></div>
+    </section><section import="cube" imply="true" base="" child_mode="add" style="
+        --otx: -43; --oty: -2; --otz: 15;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 0.1; --osy:0.1; --osz: 0.1;
+        --color: green;
+        " objeto="true">
+        <div front="" style="background-color: var(--color);"></div>
+        <div back="" style="background-color: var(--color);"></div>
+        <div right="" style="background-color: var(--color);"></div>
+        <div left="" style="background-color: var(--color);"></div>
+        <div top="" style="background-color: var(--color);font-size: 500px;">S</div>
+        <div bottom="" style="background-color: var(--color);"></div>
+    </section><section import="cube" imply="true" base="" child_mode="add" style="
+        --otx: -55; --oty: -2; --otz: 2;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 0.1; --osy:0.1; --osz: 0.1;
+        --color: blue;
+        " objeto="true">
+        <div front="" style="background-color: var(--color);"></div>
+        <div back="" style="background-color: var(--color);"></div>
+        <div right="" style="background-color: var(--color);"></div>
+        <div left="" style="background-color: var(--color);"></div>
+        <div top="" style="background-color: var(--color);font-size: 500px;">A</div>
+        <div bottom="" style="background-color: var(--color);"></div>
+    </section><section import="cube" imply="true" base="" child_mode="add" style="
+        --otx: -30; --oty: -2; --otz: 2;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 0.1; --osy:0.1; --osz: 0.1;
+        --color: orange;
+        " objeto="true">
+        <div front="" style="background-color: var(--color);"></div>
+        <div back="" style="background-color: var(--color);"></div>
+        <div right="" style="background-color: var(--color);"></div>
+        <div left="" style="background-color: var(--color);"></div>
+        <div top="" style="background-color: var(--color);font-size: 500px;">D</div>
+        <div bottom="" style="background-color: var(--color);"></div>
+    </section>
+    <section import="cube" imply="true" base="" child_mode="add" style="
+        --otx: 43; --oty: -2; --otz: -10;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 0.1; --osy:0.1; --osz: 0.1;
+        --color: MAGENTA;
+        " objeto="true">
+        <div front="" style="background-color: var(--color);"></div>
+        <div back="" style="background-color: var(--color);"></div>
+        <div right="" style="background-color: var(--color);"></div>
+        <div left="" style="background-color: var(--color);"></div>
+        <div top="" style="background-color: var(--color);font-size: 500px;">I</div>
+        <div bottom="" style="background-color: var(--color);"></div>
+    </section><section import="cube" imply="true" base="" child_mode="add" style="
+        --otx: 43; --oty: -2; --otz: 15;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 0.1; --osy:0.1; --osz: 0.1;
+        --color: STEELBLUE;
+        " objeto="true">
+        <div front="" style="background-color: var(--color);"></div>
+        <div back="" style="background-color: var(--color);"></div>
+        <div right="" style="background-color: var(--color);"></div>
+        <div left="" style="background-color: var(--color);"></div>
+        <div top="" style="background-color: var(--color);font-size: 500px;">K</div>
+        <div bottom="" style="background-color: var(--color);"></div>
+    </section><section import="cube" imply="true" base="" child_mode="add" style="
+        --otx: 55; --oty: -2; --otz: 2;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 0.1; --osy:0.1; --osz: 0.1;
+        --color: burlywood;
+        " objeto="true">
+        <div front="" style="background-color: var(--color);"></div>
+        <div back="" style="background-color: var(--color);"></div>
+        <div right="" style="background-color: var(--color);"></div>
+        <div left="" style="background-color: var(--color);"></div>
+        <div top="" style="background-color: var(--color);font-size: 500px;">L</div>
+        <div bottom="" style="background-color: var(--color);"></div>
+    </section><section import="cube" imply="true" base="" child_mode="add" style="
+        --otx: 30; --oty: -2; --otz: 2;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 0.1; --osy:0.1; --osz: 0.1;
+        --color: lightseagreen;
+        " objeto="true">
+        <div front="" style="background-color: var(--color);"></div>
+        <div back="" style="background-color: var(--color);"></div>
+        <div right="" style="background-color: var(--color);"></div>
+        <div left="" style="background-color: var(--color);"></div>
+        <div top="" style="background-color: var(--color);font-size: 500px;">J</div>
+        <div bottom="" style="background-color: var(--color);"></div>
+    </section>
+<section import="cube" imply="true" base="" child_mode="add" style="
+        --otx: 0; --oty: -2; --otz: 2;
+        --orx:0; --ory: 0; --orz:0;
+        --osx: 0.4; --osy: 0.1; --osz: 0.4;
+        --color: lightseagreen;
+        " objeto="true">
+        <div front="" style="background-color: var(--color);"></div>
+        <div back="" style="background-color: var(--color);"></div>
+        <div right="" style="background-color: var(--color);"></div>
+        <div left="" style="background-color: var(--color);"></div>
+        <iframe top="" style="" src="https://gamejolt.com/@JustLuck">J</iframe>
+        <div bottom="" style="background-color: var(--color);"></div>
+    </section></section>
+
+            
+            <section import="cube" imply="true" base="" style="
+        --otx: -253; --oty: 25; --otz: 150;
+        --orx:0; --ory: 90; --orz:0;
+        --osx: 1; --osy: 0.8; --osz: 0.1;
+        --w: 200;
+        " objeto="true" child_mode="replace">
+            <div front="" style="background-color: black;">
+                <iframe src="public/img/cv.pdf" style="z-index:654165; width: 48%; height: 95%">
+                    
+                </iframe>
+                <iframe src="public/img/profile.pdf" style="width: 48%; height: 95%;">
+                    
+                </iframe>
+            </div>
+            <div back="" style="background-color: black;"></div>
+            <div right="" objeto="false" _orientation="horizontal_center" style="background-color: black;">
+                
+            </div>
+            <div left="" style="background-color: black;"></div>
+            <div top="" style="background-color: black;"></div>
+            <div bottom="" style="background-color: black;"></div>
+        </section><section import="cube" imply="true" base="" style="
+        --otx: -304; --oty: -29; --otz: 97;
+        --orx:0; --ory: 90; --orz:0;
+        --osx: 1; --osy: 1; --osz: 0.1;
+        " objeto="true" child_mode="replace">
+            <a front="" href="https://www.linkedin.com/in/romelinodev/" target="_blank" style="background-color: transparent; color: black">
+                Linkedin Profile
+</a>
+            
+            
+            
+            
+            
+        </section></mueve_objetos>
+        </rota_objetos>
+    </corrector_de_perspectiva>
+</body>
