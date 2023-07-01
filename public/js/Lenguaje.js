@@ -18,14 +18,14 @@ const lenguaje =
     {
         es:'Juegos Gratis!'
         ,
-        en:'Free Games'
+        en:'Free Games!'
     }
     ,
     mi_playstore:
     {
         es:'Mi Playstore'
         ,
-        en:'Mine Playstore'
+        en:'My Playstore'
     }
 }
 if(localStorage.la)
